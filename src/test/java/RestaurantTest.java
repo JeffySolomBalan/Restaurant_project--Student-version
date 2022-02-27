@@ -26,6 +26,27 @@ class RestaurantTest {
     	addMenu();
     }
     
+  //>>>>>>>>>>>>>>>>>>>>>>CALCULATING TOTAL ORDER COST<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void total_order_cost_should_be_sum_of_prices_of_selected_items() throws restaurantNotFoundException {
+    	List<String> selectedItemArray = new ArrayList<>();
+    	selectedItemArray.add("Sweet corn soup");
+    	selectedItemArray.add("Vegetable lasagne");
+    	
+    	double totalOrderCost = restaurant.getTotalOrderValue(selectedItemArray);
+    	assertEquals(388, totalOrderCost);
+    }
+    
+    @Test
+    public void total_order_cost_should_be_zero_when_no_item_is_selected() throws restaurantNotFoundException {
+    	List<String> selectedItemArray = null;
+    	double totalOrderCost = restaurant.getTotalOrderValue(selectedItemArray);
+    	assertEquals(0, totalOrderCost);
+    	
+    }
+  //>>>>>>>>>>>>>>>>>>>>>>CALCULATING TOTAL ORDER COST<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    
+    
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
     @Test
